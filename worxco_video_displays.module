@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function worxco_video_display_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "file_entity" && $api == "file_default_displays") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function worxco_video_displays_entity_info_alter(&$entity_info) {
+  $entity_info['file']['view modes']['worxco_video_displays_default'] = array('label' => t('Worxco Default'), 'custom settings' => TRUE);
+  $entity_info['file']['view modes']['worxco_video_displays_small'] = array('label' => t('Worxco Small'), 'custom settings' => TRUE);
+}
