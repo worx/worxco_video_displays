@@ -5,6 +5,31 @@
  */
 function worxco_video_displays_install() {
 
+  $name = 'video__worxco_video_displays_large__media_youtube_video';
+  $settings = array(
+    'version' => '3',
+    'theme' => 'dark',
+    'width' => '640',
+    'height' => '389',
+    'fullscreen' => 1,
+    'autoplay' => 0,
+    'related' => 0,
+    'hd' => 0,
+    'showsearch' => 0,
+    'modestbranding' => 0,
+    'showinfo' => 1,
+    'chromeless' => 0,
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
   $name = 'video__worxco_video_displays_default__media_youtube_video';
   $settings = array(
     'version' => '3',
@@ -38,7 +63,7 @@ function worxco_video_displays_install() {
     'height' => '182',
     'fullscreen' => 1,
     'autoplay' => 0,
-    'related' => 1,
+    'related' => 0,
     'hd' => 0,
     'showsearch' => 0,
     'modestbranding' => 0,
@@ -53,5 +78,44 @@ function worxco_video_displays_install() {
     'status' => 1,
     'settings' => serialize($settings),
   ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_teaser__media_youtube_image';
+  $settings = array(
+    'image_style' => 'ca_video_gallery_preview',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function worxco_video_displays_uninstall() {
+  $name = 'video__worxco_video_displays_large__media_youtube_video';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+
+  $name = 'video__worxco_video_displays_default__media_youtube_video';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+
+  $name = 'video__worxco_video_displays_small__media_youtube_video';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+
+  $name = 'video__worxco_video_displays_teaser__media_youtube_image';
+  db_delete('file_display')
+  ->condition('name', $name)
   ->execute();
 }
