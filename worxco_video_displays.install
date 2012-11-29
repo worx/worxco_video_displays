@@ -93,6 +93,64 @@ function worxco_video_displays_install() {
     'settings' => serialize($settings),
   ))
   ->execute();
+  
+  db_insert('file_type')
+  ->fields(array(
+    'type' => 'video',
+    'label' => 'Video',
+    'description' => 'A <em>Video</em> file is a moving visual recording.',
+  ))
+  ->execute();
+
+  db_insert('file_type_mimetypes')
+  ->fields(array(
+    'type' => 'video',
+    'mimetype' => 'video/quicktime',
+  ))
+  ->execute();
+
+  db_insert('file_type_mimetypes')
+  ->fields(array(
+    'type' => 'video',
+    'mimetype' => 'video/mp4',
+  ))
+  ->execute();
+
+  db_insert('file_type_mimetypes')
+  ->fields(array(
+    'type' => 'video',
+    'mimetype' => 'video/x-msvideo',
+  ))
+  ->execute();
+
+  db_insert('file_type_mimetypes')
+  ->fields(array(
+    'type' => 'video',
+    'mimetype' => 'video/ogg',
+  ))
+  ->execute();
+
+  db_insert('file_type_mimetypes')
+  ->fields(array(
+    'type' => 'video',
+    'mimetype' => 'video/youtube',
+  ))
+  ->execute();
+
+  db_insert('file_type_streams')
+  ->fields(array(
+    'type' => 'video',
+    'stream' => 'public',
+  ))
+  ->execute();
+
+  db_insert('file_type_streams')
+  ->fields(array(
+    'type' => 'video',
+    'stream' => 'youtube',
+  ))
+  ->execute();
+
 }
 
 /**
