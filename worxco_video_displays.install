@@ -4,6 +4,8 @@
  * Implements hook_install().
  */
 function worxco_video_displays_install() {
+  // Create preset.
+  worxco_video_displays_image_default_styles();
 
   $name = 'video__worxco_video_displays_large__media_youtube_video';
   $settings = array(
@@ -19,6 +21,22 @@ function worxco_video_displays_install() {
     'modestbranding' => 0,
     'showinfo' => 1,
     'chromeless' => 0,
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_large__media_vimeo_video';
+  $settings = array(
+    'width' => '640',
+    'height' => '389',
+    'autoplay' => 0,
   );  
 
   db_insert('file_display')
@@ -55,6 +73,22 @@ function worxco_video_displays_install() {
   ))
   ->execute();
 
+  $name = 'video__worxco_video_displays_default__media_vimeo_video';
+  $settings = array(
+    'width' => '560',
+    'height' => '340',
+    'autoplay' => 0,
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
   $name = 'video__worxco_video_displays_small__media_youtube_video';
   $settings = array(
     'version' => '3',
@@ -80,9 +114,39 @@ function worxco_video_displays_install() {
   ))
   ->execute();
 
+  $name = 'video__worxco_video_displays_small__media_vimeo_video';
+  $settings = array(
+    'width' => '300',
+    'height' => '182',
+    'autoplay' => 0,
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
   $name = 'video__worxco_video_displays_teaser__media_youtube_image';
   $settings = array(
-    'image_style' => 'ca_video_gallery_preview',
+    'image_style' => 'worxco_video_teaser',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_teaser__media_vimeo_image';
+  $settings = array(
+    'image_style' => 'worxco_video_teaser',
   );  
 
   db_insert('file_display')
