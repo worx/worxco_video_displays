@@ -19,3 +19,100 @@ function worxco_video_displays_entity_info_alter(&$entity_info) {
   $entity_info['file']['view modes']['worxco_video_displays_small'] = array('label' => t('Worxco Small'), 'custom settings' => TRUE);
   $entity_info['file']['view modes']['worxco_video_displays_teaser'] = array('label' => t('Worxco Teaser'), 'custom settings' => TRUE);
 }
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function worxco_video_displays_image_default_styles() {
+  $styles = array();
+
+  // Image style: worxco_video_default.
+  $styles['worxco_video_default'] = array(
+    'name' => 'worxco_video_default',
+    'effects' => array(
+      4 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '560',
+          'height' => '340',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Image style: worxco_video_large.
+  $styles['worxco_video_large'] = array(
+    'name' => 'worxco_video_large',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '640',
+          'height' => '389',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Image style: worxco_video_small.
+  $styles['worxco_video_small'] = array(
+    'name' => 'worxco_video_small',
+    'effects' => array(
+      5 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '300',
+          'height' => '182',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Image style: worxco_video_teaser.
+  $styles['worxco_video_teaser'] = array(
+    'name' => 'worxco_video_teaser',
+    'effects' => array(
+      6 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '200',
+          'height' => '121',
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  return $styles;
+}
