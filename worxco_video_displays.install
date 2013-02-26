@@ -241,3 +241,11 @@ function worxco_video_displays_uninstall() {
   ->condition('name', $name)
   ->execute();
 }
+
+/**
+ * Update 7001 Adds the image sytles.
+ */
+function worxco_video_displays_update_7001() {
+  // Create preset.
+  worxco_video_displays_image_default_styles();
+}
