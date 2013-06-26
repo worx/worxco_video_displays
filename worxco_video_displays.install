@@ -201,20 +201,6 @@ function worxco_video_displays_install() {
   ))
   ->execute();
 
-  db_insert('file_type_streams')
-  ->fields(array(
-    'type' => 'video',
-    'stream' => 'public',
-  ))
-  ->execute();
-
-  db_insert('file_type_streams')
-  ->fields(array(
-    'type' => 'video',
-    'stream' => 'youtube',
-  ))
-  ->execute();
-
 }
 
 /**
