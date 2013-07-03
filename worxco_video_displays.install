@@ -166,41 +166,6 @@ function worxco_video_displays_install() {
   ))
   ->execute();
 
-  db_insert('file_type_mimetypes')
-  ->fields(array(
-    'type' => 'video',
-    'mimetype' => 'video/quicktime',
-  ))
-  ->execute();
-
-  db_insert('file_type_mimetypes')
-  ->fields(array(
-    'type' => 'video',
-    'mimetype' => 'video/mp4',
-  ))
-  ->execute();
-
-  db_insert('file_type_mimetypes')
-  ->fields(array(
-    'type' => 'video',
-    'mimetype' => 'video/x-msvideo',
-  ))
-  ->execute();
-
-  db_insert('file_type_mimetypes')
-  ->fields(array(
-    'type' => 'video',
-    'mimetype' => 'video/ogg',
-  ))
-  ->execute();
-
-  db_insert('file_type_mimetypes')
-  ->fields(array(
-    'type' => 'video',
-    'mimetype' => 'video/youtube',
-  ))
-  ->execute();
-
 }
 
 /**
