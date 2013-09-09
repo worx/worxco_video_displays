@@ -157,14 +157,6 @@ function worxco_video_displays_install() {
     'settings' => serialize($settings),
   ))
   ->execute();
-  
-  db_insert('file_type')
-  ->fields(array(
-    'type' => 'video',
-    'label' => 'Video',
-    'description' => 'A <em>Video</em> file is a moving visual recording.',
-  ))
-  ->execute();
 
 }
 
