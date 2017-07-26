@@ -89,6 +89,34 @@ function worxco_video_displays_install() {
   ))
   ->execute();
 
+  $name = 'video__worxco_video_displays_default_preview__media_youtube_image';
+  $settings = array(
+    'image_style' => 'worxco_video_default',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_default_preview__media_vimeo_image';
+  $settings = array(
+    'image_style' => 'worxco_video_default',
+  );
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
   $name = 'video__worxco_video_displays_small__media_youtube_video';
   $settings = array(
     'version' => '3',
@@ -119,6 +147,34 @@ function worxco_video_displays_install() {
     'width' => '300',
     'height' => '182',
     'autoplay' => 0,
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_small_preview__media_youtube_image';
+  $settings = array(
+    'image_style' => 'worxco_video_small',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_small_preview__media_vimeo_image';
+  $settings = array(
+    'image_style' => 'worxco_video_small',
   );  
 
   db_insert('file_display')
@@ -168,18 +224,55 @@ function worxco_video_displays_uninstall() {
   db_delete('file_display')
   ->condition('name', $name)
   ->execute();
+  
+  $name = 'video__worxco_video_displays_large__media_vimeo_video';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
 
   $name = 'video__worxco_video_displays_default__media_youtube_video';
   db_delete('file_display')
   ->condition('name', $name)
   ->execute();
+  
+  $name = 'video__worxco_video_displays_default__media_vimeo_video';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+
+  $name = 'video__worxco_video_displays_default_preview__media_youtube_image';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+  
+  video__worxco_video_displays_default_preview__media_vimeo_image
 
   $name = 'video__worxco_video_displays_small__media_youtube_video';
   db_delete('file_display')
   ->condition('name', $name)
   ->execute();
+  
+  $name = 'video__worxco_video_displays_small__media_vimeo_video';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+
+  $name = 'video__wworxco_video_displays_small_preview__media_youtube_image';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+  
+  $name = 'video__worxco_video_displays_small_preview__media_vimeo_image';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
 
   $name = 'video__worxco_video_displays_teaser__media_youtube_image';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
+  
+  $name = 'video__worxco_video_displays_teaser__media_vimeo_image';
   db_delete('file_display')
   ->condition('name', $name)
   ->execute();
@@ -191,4 +284,67 @@ function worxco_video_displays_uninstall() {
 function worxco_video_displays_update_7001() {
   // Create preset.
   worxco_video_displays_image_default_styles();
+}
+
+/**
+ * Update 7002 Addes the Default and Small Previews.
+ */
+function worxco_video_displays_update_7001() {
+  // Create Default Preview.
+  $name = 'video__worxco_video_displays_default_preview__media_youtube_image';
+  $settings = array(
+    'image_style' => 'worxco_video_default',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_default_preview__media_vimeo_image';
+  $settings = array(
+    'image_style' => 'worxco_video_default',
+  );
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+ // Create Small Preview.
+  $name = 'video__worxco_video_displays_small_preview__media_youtube_image';
+  $settings = array(
+    'image_style' => 'worxco_video_small',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
+
+  $name = 'video__worxco_video_displays_small_preview__media_vimeo_image';
+  $settings = array(
+    'image_style' => 'worxco_video_small',
+  );  
+
+  db_insert('file_display')
+  ->fields(array(
+    'name' => $name,
+    'weight' => 0,
+    'status' => 1,
+    'settings' => serialize($settings),
+  ))
+  ->execute();
 }
