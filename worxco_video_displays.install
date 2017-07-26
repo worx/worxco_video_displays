@@ -245,7 +245,10 @@ function worxco_video_displays_uninstall() {
   ->condition('name', $name)
   ->execute();
   
-  video__worxco_video_displays_default_preview__media_vimeo_image
+  $name = 'video__worxco_video_displays_default_preview__media_vimeo_image';
+  db_delete('file_display')
+  ->condition('name', $name)
+  ->execute();
 
   $name = 'video__worxco_video_displays_small__media_youtube_video';
   db_delete('file_display')
