@@ -16,7 +16,9 @@ function worxco_video_display_ctools_plugin_api() {
 function worxco_video_displays_entity_info_alter(&$entity_info) {
   $entity_info['file']['view modes']['worxco_video_displays_large'] = array('label' => t('Worxco Large'), 'custom settings' => TRUE);
   $entity_info['file']['view modes']['worxco_video_displays_default'] = array('label' => t('Worxco Default'), 'custom settings' => TRUE);
+  $entity_info['file']['view modes']['worxco_video_displays_default_preview'] = array('label' => t('Worxco Default Preview'), 'custom settings' => TRUE);
   $entity_info['file']['view modes']['worxco_video_displays_small'] = array('label' => t('Worxco Small'), 'custom settings' => TRUE);
+  $entity_info['file']['view modes']['worxco_video_displays_small_preview'] = array('label' => t('Worxco Small Preview'), 'custom settings' => TRUE);
   $entity_info['file']['view modes']['worxco_video_displays_teaser'] = array('label' => t('Worxco Teaser'), 'custom settings' => TRUE);
 }
 

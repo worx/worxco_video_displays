@@ -292,7 +292,7 @@ function worxco_video_displays_update_7001() {
 /**
  * Update 7002 Addes the Default and Small Previews.
  */
-function worxco_video_displays_update_7001() {
+function worxco_video_displays_update_7002() {
   // Create Default Preview.
   $name = 'video__worxco_video_displays_default_preview__media_youtube_image';
   $settings = array(
